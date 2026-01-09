@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ログイン</title>
+    <link rel="stylesheet" href="design.css" />
+  </head>
+  <body>
+    <main>
+      <h2>ログインしてください</h2>
+      <div class="password">
+        <input type="text" id="name" placeholder="USERNAME" /><br />
+        <input type="password" id="pass" placeholder="PASSWORD" />
+      </div>
+      <input
+        type="button"
+        id="passButton"
+        value="決定"
+        class="enterButton"
+        onclick="checkpass()"
+      />
+      <div id="notPass"></div>
+    </main>
+  </body>
+  <script src="pass.js"></script>
+</html>
