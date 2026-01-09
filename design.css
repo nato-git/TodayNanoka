@@ -18,6 +18,8 @@ header {
   border: #dfdfdf 3px solid;
   border-radius: 3px;
   margin-bottom: 5px;
+  padding: 10px;
+  font-size: 15px;
 }
 .titleName {
   font-size: 20px;
@@ -31,10 +33,14 @@ header {
   margin-bottom: 5px;
   display: flex;
   justify-content: center;
+  white-space: pre-wrap;
+  text-align: left;
+  margin: auto;
+  background-color: #ffffff;
 }
 
 .block {
-  border: #444444;
+  border: #444444 3px solid;
   border-radius: 3px;
   padding: 8px;
   margin: 5px;
@@ -43,7 +49,7 @@ header {
   margin-right: 25px;
 }
 .explain {
-  font-size: 10px;
+  font-size: 13px;
   color: #555;
 }
 

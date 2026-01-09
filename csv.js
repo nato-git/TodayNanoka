@@ -34,7 +34,7 @@ function renderList() {
     div.className = 'content';
     div.innerHTML = `
         <div class="block">
-            <a href="javascript:void(0)" onclick="moves(${index})" class="read">${title}</a>
+            <a href="javascript:void(0)" onclick="moves(${index})" class="read">・${title}</a>
             <p class="explain">投稿日:${date}</p>
         </div>
     `;
