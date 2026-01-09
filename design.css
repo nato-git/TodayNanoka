@@ -32,14 +32,14 @@ body {
   border-bottom: #000 3px solid;
 }
 .contents {
-  font-size: 15px;
+  font-size: 18px;
   margin-top: 5px;
   margin-bottom: 5px;
   display: flex;
   justify-content: center;
   white-space: pre-wrap;
   text-align: left;
-  margin: auto;
+  margin: 5px 0;
   padding: 10px 20px;
   background-color: #ffffff;
 }
@@ -76,8 +76,8 @@ footer {
 }
 
 img {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   right: 10px;
   top: 20px;
   position: absolute;
