@@ -99,3 +99,10 @@ img {
   border: #232323 solid 2px;
   border-radius: 8px;
 }
+
+@media (max-width: 767px) {
+  img {
+    transform: scale(0.15);
+    transform-origin: top right;
+  }
+}
