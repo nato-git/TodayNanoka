@@ -102,7 +102,7 @@ img {
 
 @media (max-width: 767px) {
   img {
-    transform: scale(0.15);
+    transform: scale(0.05);
     transform-origin: top right;
   }
 }
