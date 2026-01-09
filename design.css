@@ -14,7 +14,9 @@ header {
 }
 body {
   padding: 5px;
+  margin-bottom: 60px;
 }
+
 .back {
   color: #000;
   border: #dfdfdf 3px solid;
@@ -62,8 +64,10 @@ footer {
   font-family: 'Courier New', Courier, monospace;
   font-size: 15px;
   background-color: #fff7c7;
-  position: relative;
+  position: fixed;
   bottom: 0;
+  width: 100%;
+  z-index: 100;
 }
 
 .No {
