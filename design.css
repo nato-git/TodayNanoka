@@ -20,7 +20,7 @@ body {
   border: #dfdfdf 3px solid;
   border-radius: 3px;
   margin-bottom: 5px;
-  padding: 10px;
+  padding: 5px 10px;
   font-size: 30px;
 }
 .titleName {
@@ -38,7 +38,7 @@ body {
   white-space: pre-wrap;
   text-align: left;
   margin: auto;
-  padding: 10px auto 10px auto;
+  padding: 10px 20px;
   background-color: #ffffff;
 }
 
@@ -62,7 +62,7 @@ footer {
   font-family: 'Courier New', Courier, monospace;
   font-size: 15px;
   background-color: #fff7c7;
-  position: fixed;
+  position: relative;
   bottom: 0;
 }
 
