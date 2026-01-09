@@ -3,7 +3,7 @@ var pushhtml = document.getElementById('site');
 
 async function csv_load() {
   const url =
-    'https://docs.google.com/spreadsheets/d/e/2PACX-1vSxT-emvCVDnjvmlNy_R1DUIyL0dh9UlcmjL1WMV_XFdvoGWfb6Co5YPjcnvYXU5tuJvvJwrMyNEAYl/pub?output=csv';
+    'https://docs.google.com/spreadsheets/d/e/2PACX-1vSxT-emvCVDnjvmlNy_R1DUIyL0dh9UlcmjL1WMV_XFdvoGWfb6Co5YPJcnvYXU5tuJvvJwrMyNEAYl/pub?output=csv';
 
   Papa.parse(url, {
     download: true,
