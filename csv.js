@@ -50,12 +50,12 @@ function moves(index) {
   var rightButton = '';
   var leftButton = '';
   if (index > 0) {
-    leftButton = `<a class="RightGo" onclick="moves(${
+    leftButton = `<a class="LeftGo" onclick="moves(${
       index - 1
     })"><strong>></strong></a>`;
   }
   if (index < textData.length - 1) {
-    rightButton = `<a class="LeftGo" onclick="moves(${
+    rightButton = `<a class="RightGo" onclick="moves(${
       index + 1
     })"><strong><</strong></a>`;
   }
