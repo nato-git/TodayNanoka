@@ -62,7 +62,7 @@ function moves(index) {
 
   const htmlcontent = `
     <div style="padding: 20px;">
-        <a href="index.html" class="back">⇦</a>
+        <a href="index.html" class="back"><strong>⇦</strong></a>
         <div class="titleLine">
           ${leftButton}
           <h2 class="titleName">${title}</h2>
