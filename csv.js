@@ -52,12 +52,12 @@ function moves(index) {
   if (index > 0) {
     leftButton = `<a class="LeftGo" onclick="moves(${
       index - 1
-    })"><strong>></strong></a>`;
+    })"><strong><</strong></a>`;
   }
   if (index < textData.length - 1) {
     rightButton = `<a class="RightGo" onclick="moves(${
       index + 1
-    })"><strong><</strong></a>`;
+    })"><strong>></strong></a>`;
   }
 
   const htmlcontent = `
