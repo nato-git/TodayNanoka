@@ -22,7 +22,7 @@ body {
   border: #dfdfdf 3px solid;
   border-radius: 3px;
   margin-bottom: 5px;
-  padding: 0 15px;
+  padding: 3px 15px 0 15px;
   font-size: 30px;
   text-decoration: none;
   cursor: pointer;
