@@ -47,16 +47,29 @@ function moves(index) {
   const title = item['タイトルを入力してください'];
   const content = item['内容を入力してください'];
   const time = item['タイムスタンプ'];
+  var rightButton = '';
+  var leftButton = '';
+  if (index > 0) {
+    rightButton = `<a class="RightGo" onclick="moves(${index - 1})">></a>`;
+  }
+  if (index < textData.length - 1) {
+    leftButton = `<a class="LeftGo" onclick="moves(${index + 1})"><</a>`;
+  }
 
   const htmlcontent = `
     <div style="padding: 20px;">
         <a href="index.html" class="back">⇦</a>
-        <h2 class="titleName">${title}</h2>
+        <div class="titleLine">
+          ${leftButton}
+          <h2 class="titleName">${title}</h2>
+          ${rightButton}
+        </div>
         <p class="contents">${content}</p>
     </div>
     <p class="explain">投稿:${time}</p>
   `;
   document.body.innerHTML = htmlcontent;
+  window.screenTop;
 }
 
 csv_load();
