@@ -50,10 +50,7 @@ function renderList(number) {
   pushhtml.innerHTML = '';
   const startID = number;
   const endID = number + 9;
-  var textcontent = `
-            <div class="back">
-              <a href="javascript:void(0)" onclick="clickFile()">⇦</a>
-            </div>`;
+  var textcontent = `<a onclick="clickFile()" class="back"><strong>⇦</strong></a>`;
   const filteredData = textData.filter((item) => {
     const id = parseInt(item[upid]);
     return id >= startID && id <= endID;
@@ -75,6 +72,9 @@ function moves(index) {
   const item = textData[index];
   if (!item) return;
 
+  const currentId = parseInt(item[upid]);
+  const groupStartNumber = Math.floor((currentId - 1) / 10) * 10 + 1;
+
   const leftButton =
     index > 0
       ? `<a class="LeftGo" onclick="moves(${
@@ -90,7 +90,7 @@ function moves(index) {
 
   pushhtml.innerHTML = `
     <div style="padding: 20px;">
-        <a onclick="clickFile()" class="back"><strong>⇦</strong></a>
+        <a onclick="renderList(${groupStartNumber})" class="back"><strong>⇦</strong></a>
         <div class="titleLine">
           ${leftButton}
           <h2 class="titleName">${item[uptitle]}</h2>
