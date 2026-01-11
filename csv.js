@@ -24,33 +24,49 @@ async function csv_load() {
 }
 
 function clickFile() {
-  let html = '';
-  for (let i = 0; i < textData.length; i += 10) {
+  pushhtml.innerHTML = '';
+  let filecontent = '';
+  const maxId = Math.max(...textData.map((item) => parseInt(item[upid]) || 0));
+  for (let i = 1; i <= maxId; i += 10) {
     const start = i;
-    const end = Math.min(i + 9, textData.length - 1);
-    html += `
-      <div class="block">
-        <a href="javascript:void(0)" onclick="renderList(${i})" class="read">
-          ・今日のナノカ ${start} ~ ${end}
-        </a>
-      </div>`;
+    const end = i + 9;
+    const hasData = textData.some((item) => {
+      const id = parseInt(item[upid]);
+      return id >= start && id <= end;
+    });
+    if (hasData) {
+      filecontent += `
+        <div class="block">
+          <a href="javascript:void(0)" onclick="renderList(${start})" class="read">
+            ・今日のナノカ ${start} ~ ${end}
+          </a>
+        </div>`;
+    }
   }
-  pushhtml.innerHTML = html;
+  pushhtml.innerHTML = filecontent;
 }
 
 function renderList(number) {
-  let html = '';
-  const endNumber = Math.min(number + 10, textData.length);
-
-  for (let i = number; i < endNumber; i++) {
-    const item = textData[i];
-    html += `
+  pushhtml.innerHTML = '';
+  const startID = number;
+  const endID = number + 9;
+  var textcontent = '';
+  const filteredData = textData.filter((item) => {
+    const id = parseInt(item[upid]);
+    return id >= startID && id <= endID;
+  });
+  filteredData.sort((a, b) => b[upid] - a[upid]);
+  for (let i = 0; i < filteredData.length; i++) {
+    const item = filteredData[i];
+    const originalIndex = textData.indexOf(item);
+    textcontent += `
       <div class="block">
-        <a href="javascript:void(0)" onclick="moves(${i})">・${item[uptitle]}</a>
+        <a href="javascript:void(0)" onclick="moves(${originalIndex})">・${item[uptitle]}</a>
         <p class="explain">投稿日:${item[update]}</p>
       </div>`;
   }
-  pushhtml.innerHTML = html;
+  textcontent += `<div class="block"><a href="javascript:void(0)" onclick="clickFile()">← 戻る</a></div>`;
+  pushhtml.innerHTML = textcontent;
 }
 
 function moves(index) {
