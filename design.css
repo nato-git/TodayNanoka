@@ -57,6 +57,8 @@ body {
 .read {
   margin-right: 25px;
   color: #232323;
+  text-decoration: none;
+  cursor: pointer;
 }
 .explain {
   font-size: 13px;

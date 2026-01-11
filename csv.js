@@ -61,7 +61,7 @@ function renderList(number) {
     const originalIndex = textData.indexOf(item);
     textcontent += `
       <div class="block">
-        <a href="javascript:void(0)" onclick="moves(${originalIndex})">・${item[uptitle]}</a>
+        <a href="javascript:void(0)" onclick="moves(${originalIndex})" class="read">・${item[uptitle]}</a>
         <p class="explain">投稿日:${item[update]} ID:${item[upid]}</p>
       </div>`;
   }
