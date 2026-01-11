@@ -50,7 +50,10 @@ function renderList(number) {
   pushhtml.innerHTML = '';
   const startID = number;
   const endID = number + 9;
-  var textcontent = '';
+  var textcontent = `
+            <div class="back">
+              <a href="javascript:void(0)" onclick="clickFile()">⇦</a>
+            </div>`;
   const filteredData = textData.filter((item) => {
     const id = parseInt(item[upid]);
     return id >= startID && id <= endID;
@@ -65,7 +68,6 @@ function renderList(number) {
         <p class="explain">投稿日:${item[update]} ID:${item[upid]}</p>
       </div>`;
   }
-  textcontent += `<div class="block"><a href="javascript:void(0)" onclick="clickFile()">← 戻る</a></div>`;
   pushhtml.innerHTML = textcontent;
 }
 
@@ -88,7 +90,7 @@ function moves(index) {
 
   pushhtml.innerHTML = `
     <div style="padding: 20px;">
-        <a href="index.html" class="back"><strong>⇦</strong></a>
+        <a onclick="clickFile()" class="back"><strong>⇦</strong></a>
         <div class="titleLine">
           ${leftButton}
           <h2 class="titleName">${item[uptitle]}</h2>
