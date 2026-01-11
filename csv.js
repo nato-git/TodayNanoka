@@ -1,5 +1,11 @@
 var textData = [];
-var pushhtml = document.getElementById('site');
+const pushhtml = document.getElementById('site');
+
+const uptime = 'タイムスタンプ';
+const update = '日にちを答えてください';
+const upid = 'IDを入力してください';
+const upcontent = '内容を入力してください';
+const uptitle = 'タイトルを入力してください';
 
 async function csv_load() {
   const url =
@@ -8,72 +14,76 @@ async function csv_load() {
   Papa.parse(url, {
     download: true,
     header: true,
+    skipEmptyLines: true,
     complete: function (results) {
       textData = results.data;
-      textData.sort(
-        (a, b) => b['IDを入力してください'] - a['IDを入力してください']
-      );
-      renderList();
-    },
-    error: function (err) {
-      console.error('データの読み込み失敗:', err);
+      textData.sort((a, b) => b[upid] - a[upid]);
+      clickFile();
     },
   });
 }
 
-function renderList() {
-  pushhtml.innerHTML = '';
+function clickFile() {
+  let html = '';
+  for (let i = 0; i < textData.length; i += 10) {
+    const start = i;
+    const end = Math.min(i + 9, textData.length - 1);
+    html += `
+      <div class="block">
+        <a href="javascript:void(0)" onclick="renderList(${i})" class="read">
+          ・今日のナノカ ${start} ~ ${end}
+        </a>
+      </div>`;
+  }
+  pushhtml.innerHTML = html;
+}
 
-  textData.forEach((item, index) => {
-    const title = item['タイトルを入力してください'];
-    const date = item['日にちを答えてください'];
+function renderList(number) {
+  let html = '';
+  const endNumber = Math.min(number + 10, textData.length);
 
-    if (!title) return;
-
-    const div = document.createElement('div');
-    div.className = 'content';
-    div.innerHTML = `
-        <div class="block">
-            <a href="javascript:void(0)" onclick="moves(${index})" class="read">・${title}</a>
-            <p class="explain">投稿日:${date}</p>
-        </div>
-    `;
-    pushhtml.appendChild(div);
-  });
+  for (let i = number; i < endNumber; i++) {
+    const item = textData[i];
+    html += `
+      <div class="block">
+        <a href="javascript:void(0)" onclick="moves(${i})">・${item[uptitle]}</a>
+        <p class="explain">投稿日:${item[update]}</p>
+      </div>`;
+  }
+  pushhtml.innerHTML = html;
 }
 
 function moves(index) {
   const item = textData[index];
-  const title = item['タイトルを入力してください'];
-  const content = item['内容を入力してください'];
-  const time = item['タイムスタンプ'];
-  var rightButton = '';
-  var leftButton = '';
-  if (index > 0) {
-    leftButton = `<a class="LeftGo" onclick="moves(${
-      index - 1
-    })"><strong><</strong></a>`;
-  }
-  if (index < textData.length - 1) {
-    rightButton = `<a class="RightGo" onclick="moves(${
-      index + 1
-    })"><strong>></strong></a>`;
-  }
+  if (!item) return;
 
-  const htmlcontent = `
+  const leftButton =
+    index > 0
+      ? `<a class="LeftGo" onclick="moves(${
+          index - 1
+        })"><strong>＜</strong></a>`
+      : '';
+  const rightButton =
+    index < textData.length - 1
+      ? `<a class="RightGo" onclick="moves(${
+          index + 1
+        })"><strong>＞</strong></a>`
+      : '';
+
+  pushhtml.innerHTML = `
     <div style="padding: 20px;">
         <a href="index.html" class="back"><strong>⇦</strong></a>
         <div class="titleLine">
           ${leftButton}
-          <h2 class="titleName">${title}</h2>
+          <h2 class="titleName">${item[uptitle]}</h2>
           ${rightButton}
         </div>
-        <p class="contents">${content}</p>
+        <p class="contents">${item[upcontent]}</p>
     </div>
-    <p class="explain">投稿:${time}</p>
+    <p class="explain">投稿:${item[uptime]}</p>
   `;
-  document.body.innerHTML = htmlcontent;
-  window.screenTop;
+
+  window.scrollTo(0, 0);
 }
 
 csv_load();
