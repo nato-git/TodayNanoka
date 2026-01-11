@@ -25,7 +25,7 @@ async function csv_load() {
 
 function clickFile() {
   pushhtml.innerHTML = '';
-  let filecontent = '';
+  let filecontent = [];
   const maxId = Math.max(...textData.map((item) => parseInt(item[upid]) || 0));
   for (let i = 1; i <= maxId; i += 10) {
     const start = i;
@@ -35,15 +35,15 @@ function clickFile() {
       return id >= start && id <= end;
     });
     if (hasData) {
-      filecontent += `
+      filecontent.push(`
         <div class="block">
           <a href="javascript:void(0)" onclick="renderList(${start})" class="read">
             ・今日のナノカ ${start} ~ ${end}
           </a>
-        </div>`;
+        </div>`);
     }
   }
-  pushhtml.innerHTML = filecontent;
+  pushhtml.innerHTML = filecontent.reverse().join('');
 }
 
 function renderList(number) {
